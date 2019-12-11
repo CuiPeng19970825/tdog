@@ -22,9 +22,14 @@ class LoginView(View):
         pass_word = request.POST.get("password")
 
         try:
+            # 根据手机号在db中取出相应的对象，如果不存在则返回None
             user = UserProfile.objects.get(phone=phone)
-            if check_password(pass_word, user.password) is not True:
+
+            # 效验输入的密码与数据库中该用户的密码
+            if pass_word != user.password:
                 user = None
+            # if check_password(pass_word, user.password) is not True:
+            #     user = None
             if user is not None:
                 login(request, user)
                 print("user{} login!".format(user.get_username()))
@@ -51,7 +56,7 @@ class RegisterView(View):
         user = UserProfile.objects.create(
             username=user_name, password=pass_word, phone=phone, email=email)
         print(user is None)
-        user.is_superuser = False
+        user.is_superuser = False  # 去除管理权限
         login(request, user)
         # try:
         #     user = UserProfile.objects.create(
@@ -66,5 +71,5 @@ class RegisterView(View):
 
 def userLogout(request):
     logout(request)
-    print('已退出的登录')
+    print('已退出登录')
     return render(request, "index.html")
