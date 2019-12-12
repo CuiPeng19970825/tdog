@@ -1,0 +1,134 @@
+
+body{width:1200px; margin:auto;}
+*{ margin:0; padding:0;}
+.frame{width:100%; height:auto;clear:both;}
+ 
+ 
+ 
+ 
+#head{
+	
+}
+#head button{
+	float:right;
+	width:100px;
+	height:25px;
+	margin:5px;
+}
+/*商店名称*/
+.store .store_head{
+	width:100%;
+	height:auto;
+	background-color:#999;
+	padding-top:10px;
+	padding-bottom:10px;
+	clear:both;
+	border:1px solid #999;
+}
+.store .store_head h3,a{
+	text-align:left;
+	color:white;
+}
+ 
+/*从属于该商店的商品们*/
+.store .store_content{
+	width:100%;
+	overflow:hidden;
+}
+.store .store_content .pro{
+	float:left;
+	border:1px solid #999;
+	width:49.83%;
+}
+.store .store_content .pro div{
+	float:left;
+	height:120px;
+}
+/*复选框*/
+.pro_select{
+	width:10%;
+}
+.pro_select input{
+	margin-top:50px;
+}
+/*商品图片*/
+.pro_img{
+	width:20%;
+}
+.pro_img img{
+	width:90%;
+	height:100%;
+}
+/*商品简介*/
+.pro_brief{
+	width:30%;
+}
+.pro_brief p{
+	margin-top:10px;
+}
+/*单价*/
+.pro_price{
+	width:20%;
+}
+.pro h4{
+	margin-top:10px;
+}
+.pro_price p{
+	color:red;
+	margin-top:20px;
+}
+ 
+ 
+/*加减器*/
+.pro_counter{
+	width:20%;
+}
+.pro_counter h4{
+	margin-top:10px;
+}
+.pro_counter span{
+	width:35px;
+    height:20px;
+	float:left;
+	border:1px solid #999;
+	margin-top:20px;
+	cursor:pointer;
+}
+ 
+ 
+ 
+ 
+#buy{
+	background-color:#F00;
+	width:100%;
+	height:100px;
+	position:fixed !important;
+	left:0px;
+	bottom:0px;
+	z-index:1;
+	color:white;
+}
+ 
+#buy #buy_all{
+	float:left;
+	padding-top:40px;
+	padding-left:100px;
+}
+#buy #heji{
+	float:right;
+	padding-top:40px;
+	padding-right:10px;
+}
+#buy #jiesuan{
+	float:right;
+	width:200px;
+	height:100%;
+}
+#jiesuan input{
+	width:100%;
+	height:100%;
+	background-color:#F60;
+	border:0;
+	color:white;
+	font-size:24px;
+}
