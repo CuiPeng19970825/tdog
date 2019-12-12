@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<title>天狗果蔬超市</title>
+
+<script type="text/javascript">  
+   function jian(obj){
+	    var oNum = obj.parentNode.children[2];
+		var iNum = parseInt(oNum.innerHTML);
+		if(iNum>1){
+			var flag = confirm("您本次修改的商品数量为："+(iNum - 1)+"请确认以上信息是否有误！");
+			if(flag)
+			    oNum.innerHTML = iNum - 1 ;
+		}
+   };
+   function jia(obj,i){
+	    var oNum = obj.parentNode.children[2];
+		var iNum = parseInt(oNum.innerHTML);
+		if(iNum<i){
+			var flag = confirm("您本次修改的商品数量为："+(iNum + 1)+"请确认以上信息是否有误！");
+			if(flag)
+			      oNum.innerHTML = iNum + 1 ;
+		}
+   };
+ 
+   function checkAll(obj){
+	    var cbs = document.getElementsByTagName("input"); 
+		for(i = 0; i<cbs.length;i++){
+			if(obj.checked == true&&cbs[i].parentNode.parentNode.parentNode.parentNode==obj.parentNode.parentNode.parentNode)
+			    cbs[i].checked = true;
+			else if(obj.checked == false&&cbs[i].parentNode.parentNode.parentNode.parentNode==obj.parentNode.parentNode.parentNode)
+			    cbs[i].checked = false;
+			else if(obj.checked == true&&obj.name=="buy_all")
+			    cbs[i].checked = true;
+			else if(obj.checked == false&&obj.name=="buy_all")
+			    cbs[i].checked = false;
+		}       
+   }
+</script>
+<script src="js/jquery-3.3.1.js"></script>
+<script>
+  $(function(){
+	    $("#delBtn").click(function(){
+		       if(!confirm("一旦删除将无法恢复！您确定要删除吗？"))	{
+				   return;
+			   }else{
+				   $(".add:checked").parent().parent().remove();
+				   $(".store").each(function(){
+					         if($(this).children(".store_content").children(".pro").children(".pro_select").children(".add").length==0)
+				                     $(this).remove(); 
+					});
+			   }
+		});  
+  });
+</script>
+</head>
+ 
+<body>
+ 
+<center>
+ 
+<div id="head"><hr/>
+     <h1>天狗果蔬超市</h1>
+     <button id="delBtn">删除</button>
+</div>
+ 
+<div id="content">
+    <form action="#" method="post">
+    <!--商店-->
+    <div class="store">
+       <!--商店名称-->
+       <div class="store_head"><h3>  <input name="$" type="checkbox" value="" οnclick="checkAll(this)"/> <a href="#"><a href="">天狗果蔬超市</a></h3></div>
+       <!--商品-->
+       <div class="store_content">
+       
+           <div class="pro">
+              <div class="pro_select"><input name="add" class="add" type="checkbox" /></div>
+              <div class="pro_img"><a href="商品详情.html" target="_blank"><img src="img/list0.jpg"/></a></div>
+              <div class="pro_brief"><p>商品1	</p></div>
+              <div class="pro_price"><h4>单价：</h4><p>¥2999777777</p></div>
+              <div class="pro_counter">
+                 <h4>数量：</h4>
+                 <span id="jian1" οnclick="jian(this)">-</span>
+                 <span id="num1">1</span>
+                 <span id="jia1" οnclick="jia(this,5)">+</span>
+              </div>
+           </div>
+           
+       </div>
+    </div>
+    
+    <div class="store">
+       <!--商店名称-->
+       <div class="store_head"><h3>  <input  type="checkbox" value="" οnclick="checkAll(this)"/> <a href="#"><a href="">天狗果蔬超市</a></h3></div>
+       <!--商品-->
+       <div class="store_content">
+       
+           <div class="pro">
+              <div class="pro_select"><input name="add" class="add" type="checkbox" /></div>
+              <div class="pro_img"><a href="商品详情.html" target="_blank"><img src="img/list0.jpg"/></a></div>
+              <div class="pro_brief"><p>商品2</p></div>
+              <div class="pro_price"><h4>单价：</h4><p>¥2999777777</p></div>
+              <div class="pro_counter">
+                 <h4>数量：</h4>
+                 <span id="jian1" οnclick="jian(this)">-</span>
+                 <span id="num1">1</span>
+                 <span id="jia1" οnclick="jia(this,5)">+</span>
+              </div>
+           </div>
+       </div>
+    </div>
+    
+    <div id="buy">
+       <div id="buy_all"><h2><input type="checkbox" name="buy_all" οnclick="checkAll(this)"/> 全选</h2></div>
+       <div id="jiesuan"><input type="submit"/></div>
+       <div id="heji"><h2>合计：¥100000000000</h2></div>
+    </div>
+    
+    
+    </form>
+</div>
+ 
+ 
+</center>
+ 
+</body>
+</html>
